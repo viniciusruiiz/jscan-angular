@@ -1,0 +1,59 @@
+<!-- <div class="jumbotron">
+  <div class="signup-form needs-validation" [ngClass]=" {
+    'was-validated':  foiEnviado
+  } " novalidate [formGroup]="registerForm"> 
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nomeFuncionario">Nome</label>
+        <input type="text" formControlName="nomeFuncionario" class="form-control" name="nomeFuncionario" id="nomeFuncionario" placeholder="Coloque seu Nome" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="senha">Senha</label>
+        <input type="password" formControlName="senha" class="form-control" id="senha" placeholder="Sua Senha" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Seu Email: </label>
+      <input type="email" formControlName="email" name="email" class="form-control" id="email" placeholder="Coloque seu email" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Telefone</label>
+      <input type="text" formControlName="phone" class="form-control" name="phone" id="phone" placeholder="Seu telefone" required>
+    </div>
+    
+    <button type="submit" (click)="onRegister()" class="btn btn-primary">Cadastrar Funcionario</button>
+  </div>
+</div> -->
+
+<h1 class=" cadastrar">Cadastrar Funcionário </h1> 
+
+<div class="card-height">
+
+<div class="card" [formGroup]="registerForm">
+ 
+    
+    <div class="txtt1">
+        <h5 class="card-title url"><Nav>Nome: </Nav></h5>
+      <input type="text" formControlName="nomeFuncionario"  class="form-control txt1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+    </div>
+
+    <div class="txtt1">
+        <h5 class="card-title url"><Nav>Senha: </Nav></h5>
+      <input type="password" formControlName="senha"  class="form-control txt1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+    </div>
+ 
+  <div class="txtt2">
+    <h5 class="card-title url nomeApi">E-mail: </h5>
+  <input type="text" formControlName="email" class="form-control txt2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+</div>
+<div class="txtt3">
+  <h5 class="card-title url tel">Telefone: </h5>
+<input type="text" formControlName="phone" class="form-control txt3" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+</div>
+
+<button class="btnCadastro" (click)="onRegister()">
+  Cadastrar</button>
+  </div>
+
+</div>  
+

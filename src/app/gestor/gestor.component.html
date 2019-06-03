@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <!-- <p>PC's dos funcionários</p> -->
+            <div class="container-fluid" style="margin-bottom:25px;">
+              <h1 style="margin-top: 20px; margin-bottom: 45px; color: #0C0874; ">
+                Funcionários</h1>
+              <div class="card teste1" style="border-color: #0C0874;  border-radius: 4px; margin-top: -10px;">
+                <div class="card-header" style="background-color: #0C0874;">
+                  <input  type="text" placeholder="Procurar funcionário" [(ngModel)]="input">
+                </div>
+                <div class="card-body card-sss">
+                  <div class="row">
+                    <!-- <div > -->
+                    <div class="col-md-6 " *ngFor="let lista of fillService.fillFuncs(listaFuncs$, input) | async " >
+                        <a routerLink="/detalhe/{{ lista.idComputador }}" class="btn btn-fix ">
+                        <div class="card" style=" border-radius: 4px; width: 250px;">
+                          <div class="card-header" style="  background-color: #0C0874;" >
+                            <h4 style="text-align: center; color:#ffffff; ">{{ lista.nmFuncionario }}</h4>
+                          </div>
+                          <div class="card-body card-body-style" >
+                            <p>{{ lista.nmComputador }}</p>
+                            <p>{{ lista.nmProcessador }}</p>
+                            <p>{{ lista.vlArmazenamento }}</p>
+                            <span>{{ lista.vlMemoriaRam }}</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <!-- </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--PC'S DOS FUNCIONARIOS END -->
+        </div>
+        <div class="col-md-4">
+            <!-- INICIO API LIST -->
+        <div class="container-fluid" style="margin-bottom:25px;  border-color: #0C0874; border-radius: 4px;">
+
+          <h4 style="margin-top: 20px; margin-bottom: 45px;   color: #0C0874;">
+            Lista de API's</h4>
+
+          <div class="card teste">
+            <div class="card-header" style="background-color:  #0C0874;">
+              <input type="text" [(ngModel)]="filtro" placeholder="Procurar API">
+            </div>
+            <div class="card-body">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th scope="col">API</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Status</th>
+                </tr>
+                </thead>
+
+                <tr *ngFor="let api of this.filro.fill(apis, filtro) | async ">
+                  <th scope="row"><a routerLink="/detalhe/{{ api.idapi }}">{{api.nmApi}}</a></th>
+                  <td>
+                    <span *ngIf="api.idtipoapi == 1">Aberta</span>
+                    <span *ngIf="api.idtipoapi == 2">Local</span>
+                  </td>
+                  <td>
+                    <div style="  height: 25px;
+                  width: 25px;
+                  background-color: #bbb;
+                  margin-left: 12px;
+                  border-radius: 50%;
+                  display: inline-block;" [ngClass]="{ 'bg-success':api.ativo, 'bg-danger':!api.ativo }">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+<!-- FIM API LIST -->
+    </div>
+</div>
+</div>

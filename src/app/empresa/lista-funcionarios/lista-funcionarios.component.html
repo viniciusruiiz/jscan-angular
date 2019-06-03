@@ -1,0 +1,35 @@
+<h1 class="titulo">Lista de funcionários</h1>
+<div class="list" >
+  
+<ul class="list-group list-group-horizontal-lg" style="float: left; width: 20%;">
+  <li class="list-group-item txt-color"> Nome</li>
+  <li class="list-group-item" *ngFor="let funcionario of funcionarios">{{ funcionario.nmFuncionario }}</li>
+</ul>
+<ul class="list-group list-group-horizontal-lg" style="width: 20%; float:left;">
+  <li class="list-group-item txt-color"> E-mail</li>
+  <li class="list-group-item" *ngFor="let funcionario of funcionarios"> {{ funcionario.nmEmail }} </li>
+</ul>
+
+<ul class="list-group list-group-horizontal-lg" style="width: 20%;float:left;">
+  <li class="list-group-item txt-color">Telefone</li>
+  <li class="list-group-item" *ngFor="let funcionario of funcionarios"> {{ funcionario.NRTELEFONE }} </li>
+</ul>
+<ul class="list-group list-group-horizontal-lg" style="width: 20%;float:left; ">
+  <li class="list-group-item txt-color"> cargo</li>
+  <li class="list-group-item" *ngFor="let funcionario of funcionarios">
+     <span *ngIf="funcionario.idTipo == 1">Gestor</span> 
+     <span *ngIf="funcionario.idTipo == 2">Desenvolvedor</span> 
+  </li>
+</ul>
+
+<ul class="list-group list-group-horizontal-lg" style="float: left; width: 20%;">
+    <li class="list-group-item txt-color"> - </li>
+    <li class="list-group-item" *ngFor="let funcionario of funcionarios"> <button (click)="excluirUsuario(funcionario)"><img src="../../../assets/lixo.png" > </button></li>
+  </ul>
+
+  <div class="mais">
+      <img src="../../../assets/plus.png" >
+    </div>
+</div>
+
+

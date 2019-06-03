@@ -1,0 +1,45 @@
+<div class="list"> 
+    <div class="container-fluid" style="margin-bottom:25px;  border-color: #0C0874; border-radius: 4px;">
+
+        <h4 style="margin-top: 20px; margin-bottom: 45px;   color: #0C0874;">
+          Lista de API's</h4>
+
+        <div class="card teste">
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th scope="col">API</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Status</th>
+              </tr>
+              </thead>
+
+              <tr *ngFor="let api of apis | async ">
+                <th scope="row"><a routerLink="api/detalhe/{{ api.idapi }}">{{api.nmApi}}</a></th>
+                <td>
+                  <span *ngIf="api.idtipoapi == 1">Aberta</span>
+                  <span *ngIf="api.idtipoapi == 2">Local</span>
+                </td>
+                <td>
+                  <div style="  height: 25px;
+                width: 25px;
+                background-color: #bbb;
+                margin-left: 12px;
+                border-radius: 50%;
+                display: inline-block;" [ngClass]="{ 'bg-success':api.ativo, 'bg-danger':!api.ativo }">
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      </div>
+<br><br><br>
+ <div class="graficos-dev">
+  <app-pc-detail></app-pc-detail>
+ </div>
+
+
+
