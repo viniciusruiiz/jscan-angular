@@ -1,0 +1,34 @@
+.img {
+    width: 6em;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  a{
+    color: white;
+    font-weight: 450;;
+  }
+
+  a:hover{
+    margin-left: 5px !important;
+  }
+
+  fa{
+    color: black;
+  }
+
+  .active {
+    background-color: #6B77BB !important;
+    border: 1 solid grey !important;
+    border-color:grey !important;
+    border-radius: 4%;
+  }
+
+.list-group-item {
+    background-color:#2E41AD
+}
+
+  

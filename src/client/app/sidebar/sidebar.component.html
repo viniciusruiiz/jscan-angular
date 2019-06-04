@@ -1,0 +1,29 @@
+<div class="colored border-0" id="sidebar-wrapper">
+  <div class="sidebar-heading">
+    <div class="navbar-text">
+      <img src="/assets/img/rikka.jpg" class="img" style="margin-left: 39px;">
+
+    </div>
+  </div>
+  <div class="list-group">
+
+    <ul class="list list-group">
+      <div *ngFor="let api of apis">
+        <li class="list-group-item border-0">
+          <a>
+            <fa routerLink={{api.path}} name="home"></fa>{{api.name}}
+          </a>
+        </li>
+      </div>
+    </ul>
+
+    <!-- <ul class="list list-group">
+      <li class="list-group-item border-0 active">
+        <a routerLink="/" class="btn btn-fix">
+          <fa name="home"></fa>Início
+        </a>
+      </li> -->
+    <!-- <app-sidelist-gst></app-sidelist-gst> -->
+
+  </div>
+</div>

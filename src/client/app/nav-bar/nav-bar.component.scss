@@ -1,0 +1,28 @@
+a{
+    color:black !important;
+}
+
+.navbar{
+    margin-bottom: 15px;
+    border-bottom: 0px !important
+}
+
+// .navbar-brand{
+//     font-weight: 300;
+
+// }
+
+@media (max-width:991px){
+    .navbar{
+        background-color: #f7f7f7;
+        border-bottom: 0px !important
+    }
+
+    a{
+        font-weight: bold;
+    }
+
+    .navbar-brand{
+        margin-left: 25px;
+    }
+}
