@@ -15,11 +15,9 @@ export class ApiAddComponent implements OnInit {
 
   ngOnInit() {
     this._registerForm = this._fb.group({
-      name: ['', Validators.required],
-      //caso seja adicionado o campo
-      //type: ['', Validators.required],
+      name: ['', Validators.required, Validators.maxLength(16)],
       //description: ['', Validators.required],
-      endpoint: ['', Validators.required],
+      endpoint: ['', Validators.required]
     })
   }
 }

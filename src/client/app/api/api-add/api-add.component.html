@@ -5,12 +5,12 @@
       <h3 class="card-title url">Cadastro de API</h3>
     <input type="text" id="endPoint" placeholder="EndPoint (ex.: https://google.com)" formControlName="endpoint" name="endpoint" class="form-control">
 
-    <input type="text" id="name" placeholder="Nome da API" formControlName="name" name="name" class="form-control">
+    <input type="text" id="name" placeholder="Nome da API" formControlName="name" name="name" class="form-control" maxlength="16">
 
-    <textarea name="message" rows="10" cols="30" placeholder="  Insira a descrição da API (opcional)"></textarea>
+    <textarea name="message" rows="10" cols="30" placeholder="Insira a descrição da API (opcional)" formControlName="description" name="description" class="form-control"></textarea>
 
 
-    <button (click)="onClick()" class="btnCadastro">
+    <button (click)="onClick()" class="btn">
       Cadastrar</button>
   </div>
 

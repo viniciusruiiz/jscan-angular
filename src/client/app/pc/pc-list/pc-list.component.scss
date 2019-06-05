@@ -14,7 +14,7 @@
 
 h4 {
     font-weight: normal;
-    color: white;
+    color: black;
 }
 
 #title {
@@ -23,7 +23,7 @@ h4 {
 }
 
 .card-header{
-    background-color: #2E41AD;
+    background-color: #7290BB;
 }
 
    //INPUT TEXT
@@ -45,4 +45,8 @@ h4 {
   
   input[type=text]:focus {
     width: 100%;
+  }
+
+  .pc {
+    background-color: #E3EDFA;
   }
