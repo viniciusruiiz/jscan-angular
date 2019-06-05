@@ -5,7 +5,8 @@ import { PcDetailComponent } from './pc/pc-detail/pc-detail.component';
 import { IndexComponent } from './gestor/index/index.component';
 
 const routes: Routes = [
-  { path: "", component: IndexComponent },
+  //{ path: "", redirectTo:"manager", pathMatch:'full' },
+  { path: "manager", component: IndexComponent },
   { path: 'detalhe', component: PcDetailComponent },
   { path: 'addapi', component: ApiAddComponent }
   //{ path: 'gestor', loadChildren: 'src\app\gestor\gestor.module#GestorModule'}

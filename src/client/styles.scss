@@ -101,27 +101,6 @@ body {
     }
   }
 
-   //INPUT TEXT
-
-  input[type=text] {
-    width: 190px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    //background-image: url("assets/img/search.png");
-    padding: 12px 20px 12px 20px;;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-  }
-  
-  input[type=text]:focus {
-    width: 100%;
-  }
-
   //SCROOLBAR
 
 ::-webkit-scrollbar {

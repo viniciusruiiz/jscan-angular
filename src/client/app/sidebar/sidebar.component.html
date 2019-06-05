@@ -9,21 +9,13 @@
 
     <ul class="list list-group">
       <div *ngFor="let api of apis">
-        <li class="list-group-item border-0">
+        <li routerLink={{api.path}} class="list-group-item border-0" [routerLinkActive]="['active']">
           <a>
-            <fa routerLink={{api.path}} name="home"></fa>{{api.name}}
+            <fa name="{{api.faIcon}}"></fa>{{api.name}}
           </a>
         </li>
       </div>
     </ul>
-
-    <!-- <ul class="list list-group">
-      <li class="list-group-item border-0 active">
-        <a routerLink="/" class="btn btn-fix">
-          <fa name="home"></fa>Início
-        </a>
-      </li> -->
-    <!-- <app-sidelist-gst></app-sidelist-gst> -->
 
   </div>
 </div>

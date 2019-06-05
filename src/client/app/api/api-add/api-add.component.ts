@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApiAddComponent implements OnInit {
 
-  constructor() { }
+  //private _formBuilder: FormBuilder
+  private _registerForm: FormGroup;
+
+  constructor( private _fb: FormBuilder) { }
 
   ngOnInit() {
+    this._registerForm = this._fb.group({
+      name: ['', Validators.required],
+      //caso seja adicionado o campo
+      //type: ['', Validators.required],
+      //description: ['', Validators.required],
+      endpoint: ['', Validators.required],
+    })
   }
-
 }

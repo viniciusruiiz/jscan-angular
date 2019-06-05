@@ -1,3 +1,18 @@
-<p>
-  api-add works!
-</p>
+<div class="card-height">
+
+  <div class="card" [formGroup]="registerForm">
+
+      <h3 class="card-title url">Cadastro de API</h3>
+    <input type="text" id="endPoint" placeholder="EndPoint (ex.: https://google.com)" formControlName="endpoint" name="endpoint" class="form-control">
+
+    <input type="text" id="name" placeholder="Nome da API" formControlName="name" name="name" class="form-control">
+
+    <textarea name="message" rows="10" cols="30" placeholder="  Insira a descrição da API (opcional)"></textarea>
+
+
+    <button (click)="onClick()" class="btnCadastro">
+      Cadastrar</button>
+  </div>
+
+
+</div>

@@ -12,8 +12,10 @@
     font-weight: 450;;
   }
 
-  a:hover{
-    margin-left: 5px !important;
+  li:hover a{
+    margin-left: 4px !important;
+    color: white;
+    transition: all 0.1s ease-out;
   }
 
   fa{
@@ -29,6 +31,12 @@
 
 .list-group-item {
     background-color:#2E41AD
+}
+
+li:hover{
+  cursor: pointer;
+  background-color: #435FFA;
+  transition: all 0.4s ease-out;
 }
 
   
