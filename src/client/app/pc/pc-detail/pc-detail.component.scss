@@ -1,0 +1,42 @@
+p, h6, h4{
+    text-align: center;
+}
+
+h6, h4 {
+    font-weight: 450;
+}
+
+.row {
+    margin-bottom: 3%;
+}
+
+.card-process {
+    margin-top: auto; 
+    margin-bottom: auto;
+}
+
+.canvas {
+    display: block;
+}
+
+.card p{
+    font-size: 16px;
+}
+
+span {
+    font-weight: 700;
+}
+
+li {
+    font-size: 15px;
+}
+
+.card-header {
+    background-color: #E3EDFA;
+}
+
+@media(max-width:991px) {
+    .card {
+      margin-bottom: 28px;
+    }
+  }

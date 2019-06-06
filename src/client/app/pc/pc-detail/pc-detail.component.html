@@ -1,31 +1,122 @@
-<div class="col-md-4 flex">
+<div class="row">
+
+  <div class="col-md-8 flex">
+    <!-- Card dos dados do computador -->
     <div class="flex-item">
-      <div style="display: block;">
-      <canvas baseChart width="40" height="40"
-                  [datasets]="lineChartData"
-                  [labels]="lineChartLabels"
-                  [options]="lineChartOptions"
-                  [colors]="lineChartColors"
-                  [legend]="lineChartLegend"
-                  [chartType]="lineChartType"
-                  [plugins]="lineChartPlugins"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"></canvas>
+      <div class="card">
+        <div class="card-header">
+          <h4>Nome do computador</h4>
+        </div>
+        <div class="class-body">
+          <p><span>Modelo:</span> xxxxx</p>
+          <p><span>Processador:</span> xxxxxxx</p>
+          <p>xxGB de <span>Memória Principal</span></p>
+          <p>xxxGB de <span>Armazenamento</span></p>
+        </div>
       </div>
     </div>
+    <!-- Fim do card dos dados do computador -->
+  </div>
+
+  <div class="col-md-4 flex card-process">
     <div class="flex-item">
-      <table class="table table-responsive table-condensed">
-        <tr>
-          <th *ngFor="let label of lineChartLabels">{{label}}</th>
-        </tr>
-        <tr *ngFor="let d of lineChartData; let i=index" [class]="'line-'+i">
-          <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-        </tr>
-      </table>
-      <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Randomize</button>
-      <button mat-button mat-raised-button color="primary" (click)="pushOne()">Push</button>
-      <button mat-button mat-raised-button color="primary" (click)="changeColor()">Recolor</button>
-      <button mat-button mat-raised-button color="primary" (click)="hideOne()">Toggle Series B</button>
-      <button mat-button mat-raised-button color="primary" (click)="changeLabel()">Change Label</button> -->
+      <div class="card">
+        <div class="card-body">
+          <p>
+            nº Processos ativos: <span>xxx</span>
+          </p>
+          <p>
+            Tempo ligado: <span>xxxx minutos</span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+
+</div>
+
+
+
+<div class="row">
+
+  <div class="col-md-6 flex">
+    <!-- Gráfico de processamento -->
+    <div class="flex-item">
+      <div class="card">
+        <div class="card-header">
+          <h6>Uso de CPU</h6>
+        </div>
+        <div class="card-body">
+          <div class="canvas">
+            <canvas baseChart [datasets]="lineChartDataCPU" [labels]="lineChartLabels" [options]="lineChartOptions"
+              [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+              [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fim do gráfico de processamento -->
+  </div>
+
+
+
+  <div class="col-md-6 flex">
+    <!-- Gráficos de uso da RAM -->
+    <div class="flex-item">
+      <div class="card">
+        <div class="card-header">
+          <h6>Uso da Memória Principal</h6>
+        </div>
+        <div class="card-body">
+          <div class="canvas">
+            <canvas baseChart [datasets]="lineChartDataRAM" [labels]="lineChartLabels" [options]="lineChartOptions"
+              [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+              [plugins]="lineChartPlugins"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fim do gráfico de uso da RAM -->
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-6 flex">
+    <div class="flex-item">
+      <div class="card">
+        <div class="card-header">
+          <h6>Armazenamento do computador</h6>
+        </div>
+        <div class="card-body">
+          <div class="canvas">
+            <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+              [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 flex">
+    <!-- Gráfico de leitura de disco -->
+    <div class="flex-item">
+      <div class="card">
+        <div class="card-header">
+          <h6>Média de leitura de disco</h6>
+        </div>
+        <div class="card-body">
+          <div class="canvas">
+            <canvas baseChart [datasets]="lineChartDataDiskReadAverage" [labels]="lineChartLabels"
+              [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+              [chartType]="lineChartType" [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fim do gráfico de leitura de disco -->
+  </div>
+</div>
