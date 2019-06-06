@@ -1,4 +1,5 @@
 export class Pc{
+    id: number;
     name: String;
     namePc: String;
     processador: String;

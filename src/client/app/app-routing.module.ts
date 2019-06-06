@@ -6,10 +6,13 @@ import { IndexComponent } from './gestor/index/index.component';
 
 const routes: Routes = [
   //{ path: "", redirectTo:"manager", pathMatch:'full' },
-  { path: "manager", component: IndexComponent },
-  { path: 'detalhe', component: PcDetailComponent },
-  { path: 'addapi', component: ApiAddComponent }
-  //{ path: 'gestor', loadChildren: 'src\app\gestor\gestor.module#GestorModule'}
+  // { path: "manager", component: IndexComponent },
+  // { path: 'detalhe', component: PcDetailComponent },
+  // { path: 'addapi', component: ApiAddComponent }
+  { 
+    path: 'manager', 
+    loadChildren: './gestor/gestor.module#GestorModule'
+  }
 ];
 
 @NgModule({

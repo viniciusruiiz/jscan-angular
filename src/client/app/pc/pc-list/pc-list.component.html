@@ -12,7 +12,7 @@
 
         <!-- <div > -->
         <div class="col-md-6" *ngFor="let pc of pcs">
-            <a routerLink="/detalhe" class="btn btn-fix ">
+            <a routerLink="/manager/detalhe/{{pc.id}}" class="btn btn-fix ">
             <div class="card">
               <div class="card-header pc">
                 <h4 style="text-align: center">{{pc.name}}</h4>

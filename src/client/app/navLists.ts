@@ -6,12 +6,12 @@ export const NavLists: ListNav[] = [{
     navItens: [
         {
             name: "Início",
-            path: "/manager",
+            path: "/manager/index",
             faIcon: "home"
         },
         {
             name: "Cadastrar API",
-            path: "/addapi",
+            path: "/manager/addapi",
             faIcon: "cogs"
         }
     ]

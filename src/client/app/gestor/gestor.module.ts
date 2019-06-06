@@ -4,24 +4,22 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IndexComponent } from './index/index.component';
-import { NavlistComponent } from './navlist/navlist.component';
-import { SidelistComponent } from './sidelist/sidelist.component';
-import { CadfuncionarioComponent } from './cadfuncionario/cadfuncionario.component';
-import { RouterModule } from '@angular/router';
+//import { RouterModule } from '@angular/router';
+import { ManagerRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [IndexComponent, NavlistComponent, SidelistComponent, CadfuncionarioComponent],
+  declarations: [IndexComponent],
   imports: [
     CommonModule,
     AngularFontAwesomeModule,
+    ManagerRoutingModule,
     ApiModule,
     PcModule,
-    RouterModule
   ],
   exports:[
-    SidelistComponent, 
-    NavlistComponent, 
-    IndexComponent
+    //SidelistComponent, 
+    //NavlistComponent, 
+    //IndexComponent
   ]
 })
 export class GestorModule { }

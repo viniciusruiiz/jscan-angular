@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
     ApiModule,
     DesenvolvedorModule,
     EmpresaModule,
-    GestorModule,
+    //GestorModule,
     PcModule
   ],
   providers: [],

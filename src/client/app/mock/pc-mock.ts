@@ -2,6 +2,7 @@ import { Pc } from '../models/pc'
 
 export const Pcs: Pc[] = [
     {
+        id: 1,
         name: "Vinicius",
         namePc: "vsruiz_corp",
         processador: "Intel top i7",
@@ -9,6 +10,7 @@ export const Pcs: Pc[] = [
         armazenamento: "480GB"
     },
     {
+        id: 2,
         name: "Thiago",
         namePc: "tjambeiro_corp",
         processador: "Intel top i5",
@@ -16,6 +18,7 @@ export const Pcs: Pc[] = [
         armazenamento: "1TB"
     },    
     {
+        id: 3,
         name: "Phelipe",
         namePc: "psimeao_corp",
         processador: "AMD top 5",
@@ -23,6 +26,7 @@ export const Pcs: Pc[] = [
         armazenamento: "1TB"
     },    
     {
+        id: 4,
         name: "Michelle",
         namePc: "mmessias_corp",
         processador: "Intel pentium 4",
@@ -30,6 +34,7 @@ export const Pcs: Pc[] = [
         armazenamento: "12TB"
     },    
     {
+        id: 5,
         name: "Larissa",
         namePc: "lalves_corp",
         processador: "AMD R9 3gen",
