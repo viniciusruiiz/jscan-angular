@@ -17,7 +17,7 @@
           </tr>
         </thead>
 
-        <tr *ngFor="let api of this.filterResult.fillApi(apis, filtro)" class="apis">
+        <tr *ngFor="let api of this.filterResult.fillApi(apis, filtro)" class="apis" routerLink="/apidetail/{{api.id}}">
 
           <th scope="row">{{api.name}}</th>
           <!-- <td>

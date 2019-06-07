@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IndexComponent } from './index/index.component';
 //import { RouterModule } from '@angular/router';
-import { ManagerRoutingModule } from './app-routing.module';
+import { ManagerRoutingModule } from './gestor-routing.module';
 
 @NgModule({
   declarations: [IndexComponent],

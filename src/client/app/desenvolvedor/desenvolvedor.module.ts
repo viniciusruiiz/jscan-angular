@@ -1,13 +1,17 @@
+import { ApiModule } from './../api/api.module';
+import { DevRoutingModule } from './desenvolvedor-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IndexComponent } from './index/index.component';
-import { NavlistComponent } from './navlist/navlist.component';
-import { SidelistComponent } from './sidelist/sidelist.component';
+import { PcModule } from '../pc/pc.module';
 
 @NgModule({
-  declarations: [IndexComponent, NavlistComponent, SidelistComponent],
+  declarations: [IndexComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    DevRoutingModule,
+    PcModule,
+    ApiModule
+  ],
 })
 export class DesenvolvedorModule { }

@@ -50,3 +50,14 @@ h4 {
   .pc {
     background-color: #E3EDFA;
   }
+
+  .pc-body:hover{
+    background-color: #f1f1f1;
+    transition-duration: 0.2s
+  }
+
+  @media (max-width: 991px){
+    .pc-body:hover{
+      transition-duration: none;
+    }
+  }

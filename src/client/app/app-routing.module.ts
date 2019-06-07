@@ -1,17 +1,19 @@
-import { ApiAddComponent } from './api/api-add/api-add.component';
+import { ApiDetailComponent } from './api/api-detail/api-detail.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PcDetailComponent } from './pc/pc-detail/pc-detail.component';
-import { IndexComponent } from './gestor/index/index.component';
 
 const routes: Routes = [
-  //{ path: "", redirectTo:"manager", pathMatch:'full' },
-  // { path: "manager", component: IndexComponent },
-  // { path: 'detalhe', component: PcDetailComponent },
-  // { path: 'addapi', component: ApiAddComponent }
-  { 
-    path: 'manager', 
+  {
+    path: 'manager',
     loadChildren: './gestor/gestor.module#GestorModule'
+  },
+  {
+    path: 'dev',
+    loadChildren: './desenvolvedor/desenvolvedor.module#DesenvolvedorModule'
+  },
+  {
+    path: 'apidetail/:apiId',
+    component: ApiDetailComponent
   }
 ];
 
