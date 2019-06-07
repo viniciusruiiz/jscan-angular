@@ -9,15 +9,31 @@ import { Component, OnInit } from '@angular/core';
 export class ApiAddComponent implements OnInit {
 
   //private _formBuilder: FormBuilder
-  private _registerForm: FormGroup;
+  private registerForm: FormGroup;
 
   constructor( private _fb: FormBuilder) { }
 
   ngOnInit() {
-    this._registerForm = this._fb.group({
-      name: ['', Validators.required, Validators.maxLength(16)],
-      //description: ['', Validators.required],
+    this.registerForm = this._fb.group({
+      name: ['', Validators.required],
+      description: [''],
       endpoint: ['', Validators.required]
     })
+  }
+  
+  //simulação para entender os validators
+  onClick(){
+    let name = this.registerForm.get('name').get;
+    console.log(name, "AAAAAAAAAAAAAA");
+    let nameerror = this.registerForm.get('name')
+    if(!!nameerror.errors){
+      console.log(nameerror.errors)
+      console.log("erro")
+      window.alert("erro de validação no campo")
+    } else {
+      console.log('sem erros')
+      console.log("cadastrou! uhuu")
+      window.alert("cadastrado com sucesso! :)")
+    }
   }
 }

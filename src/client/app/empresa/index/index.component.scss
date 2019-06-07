@@ -1,0 +1,76 @@
+a{
+    color:black !important;
+    font-weight: normal;
+}
+
+.card{
+    margin-bottom: 30px;
+    //border-color: black;
+  }
+  
+       h4 {
+        font-weight: normal;
+        color: white;
+    }
+    
+    #title {
+        font-weight: bold;
+        color: black;
+    }
+    
+    .card-header{
+        background-color: #7290BB;
+    }
+
+    th{
+        color: black;
+    }
+
+    td, th{
+        border-top : 2px solid #f7f7f7 !important;
+        text-align: center;
+    }
+
+    .table thead th{
+        border-bottom: 2px solid #f0efef;
+        border-top:0 none !important;
+    }
+
+       //INPUT TEXT
+
+   input[type=text] {
+    width: 190px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    //background-image: url("assets/img/search.png");
+    padding: 12px 20px 12px 20px;;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  input[type=text]:focus {
+    width: 100%;
+  }
+
+  .apis{
+    cursor: pointer;
+  }
+
+  //tentei colocar um efeito hover na api
+  //mas ela mexe a table toda :(
+  .apis:hover{
+    // font-size: 1.1rem;
+    transition-duration: 0.1s;
+    background-color: #f1f1f1
+  }
+
+  @media (max-width: 991px){
+    .apis:hover{
+      transition-duration: none;
+    }
+  }

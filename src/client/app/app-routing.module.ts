@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: './desenvolvedor/desenvolvedor.module#DesenvolvedorModule'
   },
   {
+    path: 'company',
+    loadChildren: './empresa/empresa.module#EmpresaModule'
+  },
+  {
     path: 'apidetail/:apiId',
     component: ApiDetailComponent
   }
