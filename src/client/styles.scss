@@ -15,7 +15,6 @@ body {
   
   #sidebar-wrapper {
     //position: fixed;
-    // max-width: 20%;
     min-height: 50rem;
     height: 100%;
     margin-left: -15rem;
@@ -23,15 +22,12 @@ body {
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-    
   }
 
   .colored{
     background-color: #7290BB
   }
 
-  
-  
   #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
@@ -68,37 +64,6 @@ body {
     #wrapper.toggled #sidebar-wrapper {
       margin-left: -15rem;
     }
-
-    #responsive{
-      display: none;
-    }
-
-    .navbar {
-      background-color:#E3EDFA;
-      color: black;
-      border-bottom: 0px !important
-    }
-  }
-
-  @media (max-width: 991px){
-    .apareceber{
-      display: block;
-      position: fixed;
-    }
-
-    #responsive{
-      display: block;
-    }
-
-    .navbar-brand{
-      margin-bottom: 15px;
-      color: black;
-    }
-
-    .navbar {
-      background-color:#2E41AD;
-      border-bottom: 0px !important
-    }
   }
 
   //SCROOLBAR
@@ -119,9 +84,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #0767bb;; 
-}
-
-fa{
-  border: 1px !important;
-  border-color: black !important;
 }

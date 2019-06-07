@@ -5,13 +5,13 @@
 
   <div class="card">
     <div class="card-header">
-      <input type="text" placeholder="Procurar funcionário">
+      <input type="text" [(ngModel)]="filtro" placeholder="Procurar funcionário">
     </div>
     <div class="card-body">
       <div class="row">
 
         <!-- <div > -->
-        <div class="col-md-6" *ngFor="let pc of pcs">
+        <div class="col-md-6" *ngFor="let pc of this.filterResult.fillApi(pcs, filtro)">
             <a routerLink="/manager/detalhe/{{pc.id}}" class="btn btn-fix ">
             <div class="card">
               <div class="card-header pc">

@@ -8,10 +8,10 @@
   <div class="list-group">
 
     <ul class="list list-group">
-      <div *ngFor="let api of apis">
-        <li routerLink={{api.path}} class="list-group-item border-0" [routerLinkActive]="['active']">
+      <div *ngFor="let navItem of navItens">
+        <li routerLink={{navItem.path}} class="list-group-item border-0" [routerLinkActive]="['active']">
           <a>
-            <fa name="{{api.faIcon}}"></fa>{{api.name}}
+            <fa name="{{navItem.faIcon}}"></fa>{{navItem.name}}
           </a>
         </li>
       </div>

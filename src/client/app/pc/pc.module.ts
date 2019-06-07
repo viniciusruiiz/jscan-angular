@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PcDetailComponent } from './pc-detail/pc-detail.component';
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ChartsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports:[
     PcDetailComponent,

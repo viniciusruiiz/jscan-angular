@@ -25,7 +25,7 @@ export const NavLists: ListNav[] = [
         {
             name: "Lista de API's",
             path: "/dev/apilist",
-            faIcon: "bars"
+            faIcon: "list-ul"
         }]
     }
 ]

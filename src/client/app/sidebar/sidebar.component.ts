@@ -8,7 +8,7 @@ import { NavLists } from '../navLists';
 })
 export class SidebarComponent implements OnInit {
 
-  apis = NavLists[0].navItens;
+  navItens = NavLists[0].navItens;
 
   constructor() { }
 

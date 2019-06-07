@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavLists } from '../navLists';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   
 })
 export class NavBarComponent implements OnInit {
+
+  navItens = NavLists[1].navItens
 
   constructor() { }
 
