@@ -9,7 +9,7 @@ import { NavLists } from '../navLists';
 })
 export class NavBarComponent implements OnInit {
 
-  navItens = NavLists[0].navItens
+  navItens = NavLists[2].navItens
 
   constructor() { }
 

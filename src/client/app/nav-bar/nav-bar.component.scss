@@ -3,11 +3,6 @@
     border-bottom: 0px !important
 }
 
-// .navbar-brand{
-//     font-weight: 300;
-
-// }
-
 @media (max-width:991px){
     .navbar{
         background-color: #f7f7f7;
@@ -16,9 +11,14 @@
     }
 
     .navbar-brand{
-        //margin-left: 25px;
+        margin-right: 0;
         font-weight: 350px !important;
     }
+}
+
+
+fa{
+  padding-right: 0.7rem
 }
 
 .responsive{
@@ -34,7 +34,8 @@
 @media (max-width: 991px){
     a{
         color:black !important;
-        margin-left: 9%;
+        //margin-left: 9%;
+        //text-align: center;
     }    
 
   .apareceber{
