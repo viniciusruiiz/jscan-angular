@@ -1,5 +1,5 @@
-import { ListNavItem } from './models/ListNavItem';
-import { ListNav } from './models/ListNav';
+import { ListNavItem } from './shared/models/ListNavItem';
+import { ListNav } from './shared/models/ListNav';
 
 export const NavLists: ListNav[] = [{
     id: 1,

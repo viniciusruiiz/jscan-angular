@@ -1,6 +1,6 @@
-import { Funcionarios } from './../../mock/funcionario-mock';
-import { FiltroService } from 'src/client/app/shared/filtro.service';
-import { Funcionario } from './../../models/funcionario';
+import { Funcionarios } from '../../shared/mock/funcionario-mock';
+import { FiltroService } from 'src/client/app/shared/services/filtro.service';
+import { Funcionario } from '../../shared/models/funcionario';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

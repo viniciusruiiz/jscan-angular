@@ -1,5 +1,7 @@
+import { LoginService } from './../shared/services/login.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { NavLists } from '../navLists';
+import { ListNavItem } from '../shared/models/ListNavItem';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,11 +10,12 @@ import { NavLists } from '../navLists';
 })
 export class SidebarComponent implements OnInit {
 
-  navItens = NavLists[2].navItens;
+  constructor(private ls: LoginService) { }
 
-  constructor() { }
+  navItens: ListNavItem[];
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.ls.navItens.subscribe(data => this.navItens = data);
   }
 
 }

@@ -1,6 +1,7 @@
 import { ApiDetailComponent } from './api/api-detail/api-detail.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'apidetail/:apiId',
     component: ApiDetailComponent
+  },
+  {
+    path: '',
+    component: LoginComponent
   }
 ];
 

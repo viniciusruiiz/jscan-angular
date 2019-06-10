@@ -1,7 +1,7 @@
 export class Api {
     id: number;
     name: string;
-    type: number;
+    //type: number;
     status: boolean;
     endPoint: string;
 }

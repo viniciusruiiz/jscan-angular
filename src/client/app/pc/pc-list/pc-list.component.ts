@@ -1,7 +1,7 @@
-import { FiltroService } from '../../shared/filtro.service';
-import { Pc } from '../../models/pc';
+import { FiltroService } from '../../shared/services/filtro.service';
+import { Pc } from '../../shared/models/pc';
 import { Component, OnInit } from '@angular/core';
-import { Pcs } from '../../mock/pc-mock'
+import { Pcs } from '../../shared/mock/pc-mock'
 
 @Component({
   selector: 'app-pc-list',

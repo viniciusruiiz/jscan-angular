@@ -12,18 +12,17 @@
           <thead>
             <tr>
               <th scope="col" style="color:black">Nome</th>
-              <th scope="col" style="color:black">E-Mail</th>
-              <th scope="col" style="color:black">Telefone</th>
+              <!-- <th scope="col" style="color:black">E-Mail</th>
+              <th scope="col" style="color:black">Telefone</th> -->
               <th scope="col" style="color:black">Cargo</th>
               <th scope="col" style="color:black">Desligar</th>
             </tr>
           </thead>
   
-          <tr *ngFor="let funcionario of this.filterResult.fillDev(funcionarios, filtro)" class="apis">
-            <!-- routerLink="/apidetail/{{funcionario.id}}" -->
-              <th scope="row">{{funcionario.nomeFuncionario}}</th>
-              <td>{{funcionario.email}}</td>
-              <td>{{funcionario.phone}}</td>
+          <tr *ngFor="let funcionario of this.filterResult.fillDev(funcionarios, filtro)">
+              <th scope="row">{{funcionario.name}}</th>
+              <!-- <td>{{funcionario.email}}</td> -->
+              <!-- <td>{{funcionario.phone}}</td> -->
               <td>
                 <span *ngIf="funcionario.type == 1">Gestor</span>
                 <span *ngIf="funcionario.type == 2">Desenvolvedor</span>

@@ -1,5 +1,5 @@
-import { Funcionario } from './../models/funcionario';
-import { Pc } from './../models/pc';
+import { Funcionario } from '../models/funcionario';
+import { Pc } from '../models/pc';
 import { Injectable } from '@angular/core';
 import { Api } from '../models/api';
 
@@ -37,7 +37,7 @@ export class FiltroService {
     }
 
     return pc.filter(
-      v => v.nomeFuncionario.toLocaleLowerCase().includes(filtro.toLocaleLowerCase())
+      v => v.name.toLocaleLowerCase().includes(filtro.toLocaleLowerCase())
    );
   }
 

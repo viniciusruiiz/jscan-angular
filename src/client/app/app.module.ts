@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
@@ -10,27 +11,30 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { DesenvolvedorModule } from './desenvolvedor/desenvolvedor.module';
 import { EmpresaModule } from './empresa/empresa.module';
-import { GestorModule } from './gestor/gestor.module';
 import { PcModule } from './pc/pc.module';
 import { ApiModule } from './api/api.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoginComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
     ApiModule,
     DesenvolvedorModule,
     EmpresaModule,
-    //GestorModule,
     PcModule
   ],
   providers: [],
