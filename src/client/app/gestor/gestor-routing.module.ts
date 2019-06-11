@@ -9,7 +9,7 @@ const routes: Routes = [
   //{ path: "", redirectTo:"manager", pathMatch:'full' },
   //{ path: "manager", component: IndexComponent },
   { path: "index", component: IndexComponent},
-  { path: 'detalhe/:pcId', component: PcDetailComponent },
+  { path: 'detalhe/:id', component: PcDetailComponent },
   { path: 'addapi', component: ApiAddComponent },
   //{ path: 'gestor', loadChildren: 'src\app\gestor\gestor.module#GestorModule'}
 ];

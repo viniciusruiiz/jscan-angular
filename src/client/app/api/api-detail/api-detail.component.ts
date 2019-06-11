@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from './../../shared/services/api.service';
 import { Label, SingleDataSet } from 'ng2-charts';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +13,7 @@ export class ApiDetailComponent implements OnInit {
 
     //#region .: Utils :.
 
+    public wait : Boolean = true;
     private month: number = new Date().getMonth();
 
     private getMonthName(month:number){
@@ -56,7 +59,7 @@ export class ApiDetailComponent implements OnInit {
   
     //#endregion
 
-  constructor() { }
+  constructor(private apiService: ApiService, private router: ActivatedRoute) { }
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -88,5 +91,15 @@ export class ApiDetailComponent implements OnInit {
     { data: [65, 59, 80, 81, 56], label: 'Número de quedas' }
   ];
 
-  ngOnInit() {  }
+  ngOnInit(){
+    let idApi = this.router.snapshot.params.apiId;
+
+    this.apiService.get(idApi).forEach(data => {
+      document.getElementById('name').innerHTML = data[0].nmApi; 
+      document.getElementById('endPoint').innerHTML = data[0].nmEndPoint; 
+      document.getElementById('endPoint').href = data[0].nmEndPoint;
+    })
+
+    setTimeout(() => this.wait = false, 3000)
+  }
 }

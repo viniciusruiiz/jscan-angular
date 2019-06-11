@@ -1,3 +1,4 @@
+import { PcService } from './pc.service';
 import { Injectable, EventEmitter, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -34,7 +35,6 @@ export class LoginService {
         return this.http.post<Funcionario>(this.url + '/auth', { email: login, senha: senha }).subscribe(data => {
             
             if (data.token) {
-                //this.id.emit(data.id);
                 this.funcionario = data;
                 this.estaLogado.emit(true);
                 this.mostrarSpinner.emit(false);

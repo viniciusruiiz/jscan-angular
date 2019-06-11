@@ -25,6 +25,7 @@ export const Funcionarios: Funcionario[] = [
         type:2,
         pc: Pcs[1],
         apis: Apis,
+        idPc: 8
     },    
     {
         id: 3,

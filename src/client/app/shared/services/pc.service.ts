@@ -1,14 +1,15 @@
+import { Pc } from './../models/pc';
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core'; import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginService } from './login.service';
 import { Api } from '../models/api';
-;
+
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class ApiService {
+export class PcService {
 
     constructor(private http: HttpClient, private ls: LoginService) { }
 
@@ -17,11 +18,11 @@ export class ApiService {
         headers: new HttpHeaders().set("Authorization", "Bearer " + this.ls.funcionario.token)
     };
 
-    getApis(id: number) {
-        return this.http.get<Api[]>(this.url + `/api/list/${id}`, { headers: new HttpHeaders().set("Authorization", "Bearer " + this.ls.funcionario.token) });
+    get(id: number){
+        return this.http.get<any>(this.url + `/pc/${id}`, this.httpOptions);
     }
 
-    get(id: number) {
-        return this.http.get<any>(this.url + `/api/${id}`, { headers: new HttpHeaders().set("Authorization", "Bearer " + this.ls.funcionario.token) });
+    getByEmployer(id: number){
+        return this.http.get<any>(this.url + `/pc/getByEmployer/${id}`, this.httpOptions);
     }
 }

@@ -3,6 +3,21 @@ a{
     font-weight: normal;
 }
 
+.wait .table {
+  display: none;
+}
+
+.waiter {
+  display: none;
+  text-align: center; 
+  margin-top: 10%; 
+  margin-bottom: 10%;
+}
+
+.wait .waiter {
+  display: block !important;
+}
+
 .card{
     margin-bottom: 30px;
     //border-color: black;

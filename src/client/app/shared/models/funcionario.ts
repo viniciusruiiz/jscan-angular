@@ -11,6 +11,7 @@ export class Funcionario{
     pc?: Pc;
     token?: string;
     message? : string;
+    idPc? : number;
     //email: string;
     //phone: string;
     //cnpj? : string;

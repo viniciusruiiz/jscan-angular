@@ -1,3 +1,4 @@
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     ChartsModule,
     RouterModule,
+    AngularFontAwesomeModule,
     FormsModule
   ],
   exports:[

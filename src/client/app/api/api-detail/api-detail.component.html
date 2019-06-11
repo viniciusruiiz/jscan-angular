@@ -3,8 +3,9 @@
   <div class="col-md-8 offset-md-2 flex">
     <div class="flex-item">
       <div class="card">
-        <div class="card-header pcstaticdata">
-          <h4>Nome da API</h4>
+        <div class="card-body pcstaticdata" [ngClass]="{'wait':wait}">
+          <fa name="spinner" animation="spin" class="waiter"></fa>
+          <h4 id="name"></h4>
         </div>
       </div>
     </div>
@@ -17,9 +18,10 @@
   <div class="col-md-8 offset-md-2 flex">
     <div class="flex-item">
       <div class="card">
-        <div class="card-header pcstaticdata">
-          <h4>EndPoint: <a class="endpoint"
-              href="https://endpointdaapi.com/parametro">https://endpointdaapi.com/parametro</a></h4>
+        <div class="card-body pcstaticdata" [ngClass]="{'wait':wait}">
+          <fa name="spinner" animation="spin" class="waiter"></fa>
+          <h4>EndPoint:
+            <a class="endpoint" id="endPoint"></a></h4>
         </div>
       </div>
     </div>

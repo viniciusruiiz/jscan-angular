@@ -10,7 +10,7 @@ export const Pcs: Pc[] = [
         armazenamento: "480GB"
     },
     {
-        id: 2,
+        id: 8,
         name: "Thiago",
         namePc: "tjambeiro_corp",
         processador: "Intel top i5",

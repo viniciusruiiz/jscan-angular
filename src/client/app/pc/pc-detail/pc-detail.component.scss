@@ -23,8 +23,23 @@ h6, h4 {
     font-size: 16px;
 }
 
-span {
-    font-weight: 700;
+// span {
+//     font-weight: 700;
+// }
+
+.wait .canvas {
+    display: none;
+}
+
+.waiter {
+    display: none;
+    text-align: center; 
+    margin-top: 10%; 
+    margin-bottom: 10%;
+}
+
+.wait .waiter {
+    display: block !important;
 }
 
 li {

@@ -5,13 +5,24 @@
     <div class="flex-item">
       <div class="card">
         <div class="card-header">
-          <h4>Nome do computador</h4>
+          <h4 id="namePc">
+            <fa name="spinner" animation="spin"></fa>
+          </h4>
         </div>
         <div class="class-body">
-          <p><span>Modelo:</span> xxxxx</p>
-          <p><span>Processador:</span> xxxxxxx</p>
-          <p>xxGB de <span>Memória Principal</span></p>
-          <p>xxxGB de <span>Armazenamento</span></p>
+          <p><span>Modelo: </span> <span id="model">
+              <fa name="spinner" animation="spin"></fa>
+            </span></p>
+          <p><span id="SO"></span></p>
+          <p><span>Processador: </span> <span id="processor">
+              <fa name="spinner" animation="spin"></fa>
+            </span></p>
+          <p><span id="memory">
+              <fa name="spinner" animation="spin"></fa>
+            </span>GB de <span>Memória Principal</span></p>
+          <p><span id="storage">
+              <fa name="spinner" animation="spin"></fa>
+            </span>GB de <span>Armazenamento</span></p>
         </div>
       </div>
     </div>
@@ -23,10 +34,14 @@
       <div class="card">
         <div class="card-body">
           <p>
-            nº Processos ativos: <span>xxx</span>
+            nº Processos ativos: <span id="processNumber">
+              <fa name="spinner" animation="spin"></fa>
+            </span>
           </p>
           <p>
-            Tempo ligado: <span>xxxx minutos</span>
+            Tempo ligado: <span id="upTime">
+              <fa name="spinner" animation="spin"></fa>
+            </span> minutos
           </p>
         </div>
       </div>
@@ -34,8 +49,6 @@
   </div>
 
 </div>
-
-
 
 <div class="row">
 
@@ -46,12 +59,12 @@
         <div class="card-header">
           <h6>Uso de CPU</h6>
         </div>
-        <div class="card-body">
+        <div class="card-body" [ngClass]="{'wait':wait}">
+          <fa name="spinner" animation="spin" class="waiter"></fa>
           <div class="canvas">
             <canvas baseChart [datasets]="lineChartDataCPU" [labels]="lineChartLabels" [options]="lineChartOptions"
               [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
-              [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)"></canvas>
+              [plugins]="lineChartPlugins"></canvas>
           </div>
         </div>
       </div>
@@ -68,7 +81,8 @@
         <div class="card-header">
           <h6>Uso da Memória Principal</h6>
         </div>
-        <div class="card-body">
+        <div class="card-body" [ngClass]="{'wait':wait}">
+          <fa name="spinner" animation="spin" class="waiter"></fa>
           <div class="canvas">
             <canvas baseChart [datasets]="lineChartDataRAM" [labels]="lineChartLabels" [options]="lineChartOptions"
               [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
@@ -89,7 +103,8 @@
         <div class="card-header">
           <h6>Armazenamento do computador</h6>
         </div>
-        <div class="card-body">
+        <div class="card-body" [ngClass]="{'wait':wait}">
+          <fa name="spinner" animation="spin" class="waiter"></fa>
           <div class="canvas">
             <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
               [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
@@ -107,12 +122,12 @@
         <div class="card-header">
           <h6>Média de leitura de disco</h6>
         </div>
-        <div class="card-body">
+        <div class="card-body" [ngClass]="{'wait':wait}">
+          <fa name="spinner" animation="spin" class="waiter"></fa>
           <div class="canvas">
             <canvas baseChart [datasets]="lineChartDataDiskReadAverage" [labels]="lineChartLabels"
               [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
-              [chartType]="lineChartType" [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)"></canvas>
+              [chartType]="lineChartType" [plugins]="lineChartPlugins"></canvas>
           </div>
         </div>
       </div>

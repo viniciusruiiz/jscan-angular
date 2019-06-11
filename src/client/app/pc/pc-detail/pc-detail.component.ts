@@ -1,6 +1,10 @@
+import { PcService } from './../../shared/services/pc.service';
+import { LoginService } from './../../shared/services/login.service';
+import { ReadService } from './../../shared/services/read.service';
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { SingleDataSet, Color, BaseChartDirective, Label } from 'ng2-charts';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pc-detail',
@@ -8,35 +12,98 @@ import { SingleDataSet, Color, BaseChartDirective, Label } from 'ng2-charts';
   styleUrls: ['./pc-detail.component.scss']
 })
 export class PcDetailComponent implements OnInit {
-  ngOnInit() {
-    setInterval(() => this.pushOne(), 2000);
+  constructor(private readService: ReadService, private loginService: LoginService, private route: ActivatedRoute, private pcService: PcService) { }
+
+  public wait : Boolean = true;
+
+  async ngOnInit() {
+    //let idPc = !!this.loginService.funcionario.pc.id ? this.loginService.funcionario.pc.id : this.route.snapshot.params.id;
+    let idPc = this.route.snapshot.params.id;
+
+    this.dataSetCpu = []
+    this.dataSetRam = []
+    this.dataSetDiskAvarage = []
+
+    console.log("id do computador: ", idPc)
+
+    this.pcService.get(idPc).forEach(data => {
+      console.log(data);
+      document.getElementById("namePc").innerHTML = data[0].nmComputador;
+      document.getElementById("model").innerHTML = data[0].nmModeloSistema;
+      document.getElementById("processor").innerHTML = data[0].nmProcessador;
+      document.getElementById("SO").innerHTML = data[0].nmSistemaOperacional;
+      document.getElementById("memory").innerHTML = parseInt(data[0].vlMemoriaRam / 1000).toString();
+      document.getElementById("storage").innerHTML = data[0].vlArmazenamento
+    })
+
+    this.readService.getPcAvailableStoragePercentage(idPc).forEach(data => {
+      this.pieChartData = [(data.total - data.available), data.available];
+    })
+
+    this.readService.getPcProcessNumber(idPc).forEach(data => {
+      document.getElementById("processNumber").innerHTML = data[0].processNumber
+    })
+
+    this.readService.getPcUpTime(idPc).forEach(data => {
+      document.getElementById("upTime").innerHTML = data[0].upTime
+    })
+
+    await this.readService.getPcCpuPercentage(idPc).forEach(data => {
+      data.forEach(item => {
+        this.dataSetCpu.unshift(item.percentageCpu)
+        this.lineChartLabels.unshift(item.readDate)
+      })
+    })
+
+    await this.readService.getPcRamPercentage(idPc).forEach(data => {
+      data.forEach(item => {
+        this.dataSetRam.unshift(item.percentageMemoryAvailable)
+      })
+    })
+
+    await this.readService.getPcDiskReadAverage(idPc).forEach(data => {
+      data.forEach(item => {
+        this.dataSetDiskAvarage.unshift(item.diskReadAvarage)
+      })
+    })
+
+    this.lineChartDataCPU[0].data = this.dataSetCpu;
+    this.lineChartDataRAM[0].data = this.dataSetRam;
+    this.lineChartDataDiskReadAverage[0].data = this.dataSetDiskAvarage;
+
+    this.chart.forEach(child => {
+      child.update();
+    })
+
+    this.wait = false;
+
+    //setInterval(() => this.pushOne(), 5000);
   }
 
-  //getCharts
   @ViewChildren(BaseChartDirective) chart: QueryList<BaseChartDirective>;
 
   //#region .: Gráfico de linha :.
 
-  private randomDataSet: number[] = [20, 25, 40, 30, 40, 30, 35] //MOCK
-  private randomDataSet2: number[] = [69, 99, 91, 80, 77, 67, 75] //MOCK
-  private randomDataSet3: number[] = [273, 299, 255, 280, 277, 267, 275] //MOCK
+  private dataSetCpu: number[]// = [20, 25, 40, 30, 40, 30, 35] //MOCK
+  private dataSetRam: number[]// = [69, 99, 91, 80, 77, 67, 75] //MOCK
+  private dataSetDiskAvarage: number[]// = [273, 299, 255, 280, 277, 267, 275] //MOCK
 
   //DATA CPU
   public lineChartDataCPU: ChartDataSets[] = [
-    { data: this.randomDataSet, label: 'Processamento (%)' },
+    { label: 'Processamento (%)' },
   ];
 
   //DATA RAM
   public lineChartDataRAM: ChartDataSets[] = [
-    { data: this.randomDataSet2, label: 'RAM (%)' },
+    { label: 'RAM (%)' },
   ];
 
   //DATA MEDIA LEITURA DE DISCO
   public lineChartDataDiskReadAverage: ChartDataSets[] = [
-    { data: this.randomDataSet3, label: 'Leituras (por minuto)' },
+    { label: 'Leituras (por minuto)' },
   ];
 
-  public lineChartLabels: Label[] = ['12:00', '12:02', '12:04', '12:06', '12:08', '12:10', '12:12'];
+  public lineChartLabels: Label[] = [];
 
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
@@ -68,7 +135,6 @@ export class PcDetailComponent implements OnInit {
     },
   };
 
-  //colocar em um json e fazer a chamada da pagina para tirar a "poluição" do código atual
   public lineChartColors: Color[] = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
@@ -108,7 +174,7 @@ export class PcDetailComponent implements OnInit {
     rotation: Math.PI,
     circumference: Math.PI,
   };
-  public pieChartLabels: Label[] = ['Em Uso', 'Disponível'];
+  public pieChartLabels: Label[] = ['Em Uso (GB)', 'Disponível (GB)'];
   public pieChartData: SingleDataSet = [300, 500];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
@@ -116,27 +182,24 @@ export class PcDetailComponent implements OnInit {
 
   //#endregion
 
-  ///MÉTODO PARA PLOT COM RANDOM NUMBERS
   private generateNumber() {
     return Math.round(Math.random() * 50)
   }
 
-  //MÉTODO POR HORA MOCKADO, QUE DEVERÁ RECEBER DADOS REAIS DO SERVIÇO DE PEGAR DADOS DA API NO LUGAR DO PUSH 
   public pushOne() {
-    this.randomDataSet.shift();
-    this.randomDataSet.push(this.generateNumber());
+    this.dataSetCpu.shift();
+    this.dataSetCpu.push(this.generateNumber());
 
-    this.randomDataSet2.shift();
-    this.randomDataSet2.push(100 - this.generateNumber());
+    this.dataSetRam.shift();
+    this.dataSetRam.push(100 - this.generateNumber());
 
-    this.randomDataSet3.shift();
-    this.randomDataSet3.push(290 - this.generateNumber());
+    this.dataSetDiskAvarage.shift();
+    this.dataSetDiskAvarage.push(290 - this.generateNumber());
 
-    this.lineChartDataCPU[0].data = this.randomDataSet;
-    this.lineChartDataRAM[0].data = this.randomDataSet2;
-    this.lineChartDataDiskReadAverage[0].data = this.randomDataSet3;
+    this.lineChartDataCPU[0].data = this.dataSetCpu;
+    this.lineChartDataRAM[0].data = this.dataSetRam;
+    this.lineChartDataDiskReadAverage[0].data = this.dataSetDiskAvarage;
 
-    //this.chart[0].chart.data.labels.shift();
     this.lineChartLabels.shift();
     this.lineChartLabels.push(new Date().toLocaleTimeString())
 
@@ -145,15 +208,5 @@ export class PcDetailComponent implements OnInit {
     })
 
   }
-
-  // public changeColor() {
-  //   this.lineChartColors[2].borderColor = 'green';
-  //   this.lineChartColors[2].backgroundColor = `rgba(0, 255, 0, 0.3)`;
-  // }
-
-  // public changeLabel() {
-  //   this.lineChartLabels[2] = ['1st Line'];
-  //   // this.chart.update();
-  // }
 }
 
