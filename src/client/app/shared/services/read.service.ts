@@ -1,7 +1,6 @@
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core'; import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginService } from './login.service';
-import { Read } from '../models/read';
 ;
 
 @Injectable({
@@ -19,6 +18,10 @@ export class ReadService {
 
     getPcCpuPercentage(id: number) {
         return this.http.get<any[]>(this.url + `/read/pc/cpu/${id}`, this.httpOptions);
+    }
+
+    getPcLastReadTime (id: number) {
+        return this.http.get<any[]>(this.url + `/read/pc/lastReadTime/${id}`, this.httpOptions);
     }
 
     getPcRamPercentage(id: number) {
@@ -39,6 +42,14 @@ export class ReadService {
 
     getPcUpTime(id: number) {
         return this.http.get<any>(this.url + `/read/pc/uptime/${id}`, this.httpOptions);
+    }
+
+    getApiPercentageTimeUp(id: number) {
+        return this.http.get<any>(this.url + `/read/api/percentageTimeUp/${id}`, this.httpOptions);
+    }
+
+    getApiTimesDownInMonth(id: number) {
+        return this.http.get<any>(this.url + `/read/api/numberTimesDown/${id}`, this.httpOptions);
     }
 
 }

@@ -14,25 +14,31 @@ import { ActivatedRoute } from '@angular/router';
 export class PcDetailComponent implements OnInit {
   constructor(private readService: ReadService, private loginService: LoginService, private route: ActivatedRoute, private pcService: PcService) { }
 
-  public wait : Boolean = true;
+  public wait: Boolean = true;
 
   async ngOnInit() {
     //let idPc = !!this.loginService.funcionario.pc.id ? this.loginService.funcionario.pc.id : this.route.snapshot.params.id;
     let idPc = this.route.snapshot.params.id;
 
+    if (!idPc) {
+      await this.pcService.getByEmployer(this.loginService.funcionario.id).forEach(data => {
+        idPc = data[0].idComputador
+      })
+    }
+
     this.dataSetCpu = []
     this.dataSetRam = []
     this.dataSetDiskAvarage = []
 
-    console.log("id do computador: ", idPc)
-
     this.pcService.get(idPc).forEach(data => {
-      console.log(data);
+      
+      let memoriaRam =  Math.round(data[0].vlMemoriaRam / 1000).toString();
+
       document.getElementById("namePc").innerHTML = data[0].nmComputador;
       document.getElementById("model").innerHTML = data[0].nmModeloSistema;
       document.getElementById("processor").innerHTML = data[0].nmProcessador;
       document.getElementById("SO").innerHTML = data[0].nmSistemaOperacional;
-      document.getElementById("memory").innerHTML = parseInt(data[0].vlMemoriaRam / 1000).toString();
+      document.getElementById("memory").innerHTML = memoriaRam
       document.getElementById("storage").innerHTML = data[0].vlArmazenamento
     })
 
@@ -77,7 +83,7 @@ export class PcDetailComponent implements OnInit {
 
     this.wait = false;
 
-    //setInterval(() => this.pushOne(), 5000);
+    setInterval(() => this.pushOne(idPc), 2000);
   }
 
   @ViewChildren(BaseChartDirective) chart: QueryList<BaseChartDirective>;
@@ -186,25 +192,37 @@ export class PcDetailComponent implements OnInit {
     return Math.round(Math.random() * 50)
   }
 
-  public pushOne() {
-    this.dataSetCpu.shift();
-    this.dataSetCpu.push(this.generateNumber());
+  public async pushOne(idPc: number) {
 
-    this.dataSetRam.shift();
-    this.dataSetRam.push(100 - this.generateNumber());
+    await this.readService.getPcLastReadTime(idPc).forEach(data => {
 
-    this.dataSetDiskAvarage.shift();
-    this.dataSetDiskAvarage.push(290 - this.generateNumber());
+      if (data[0].readDate != this.lineChartLabels[this.lineChartLabels.length - 1]) {
+        this.dataSetCpu.shift();
+        this.readService.getPcCpuPercentage(idPc).forEach(data => {
+          this.dataSetCpu.push(data[0].percentageCpu);
 
-    this.lineChartDataCPU[0].data = this.dataSetCpu;
-    this.lineChartDataRAM[0].data = this.dataSetRam;
-    this.lineChartDataDiskReadAverage[0].data = this.dataSetDiskAvarage;
+          this.lineChartLabels.shift();
+          this.lineChartLabels.push(data[0].readDate);
+        })
 
-    this.lineChartLabels.shift();
-    this.lineChartLabels.push(new Date().toLocaleTimeString())
+        this.dataSetRam.shift();
+        this.readService.getPcRamPercentage(idPc).forEach(data => {
+          this.dataSetRam.push(data[0].percentageMemoryAvailable);
+        })
 
-    this.chart.forEach(child => {
-      child.update();
+        this.dataSetDiskAvarage.shift();
+        this.readService.getPcDiskReadAverage(idPc).forEach(data => {
+          this.dataSetDiskAvarage.push(data[0].diskReadAvarage);
+        })
+
+        this.lineChartDataCPU[0].data = this.dataSetCpu;
+        this.lineChartDataRAM[0].data = this.dataSetRam;
+        this.lineChartDataDiskReadAverage[0].data = this.dataSetDiskAvarage;
+
+        this.chart.forEach(child => {
+          child.update();
+        })
+      }
     })
 
   }

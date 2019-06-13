@@ -1,5 +1,8 @@
+import { LoginService } from './../../shared/services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../shared/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-api-add',
@@ -8,10 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApiAddComponent implements OnInit {
 
-  //private _formBuilder: FormBuilder
   private registerForm: FormGroup;
+  private doing: Boolean = false;
 
-  constructor( private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder, private loginService: LoginService, private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.registerForm = this._fb.group({
@@ -20,20 +23,27 @@ export class ApiAddComponent implements OnInit {
       endpoint: ['', Validators.required]
     })
   }
-  
-  //simulação para entender os validators
-  onClick(){
-    let name = this.registerForm.get('name').get;
-    console.log(name, "AAAAAAAAAAAAAA");
-    let nameerror = this.registerForm.get('name')
-    if(!!nameerror.errors){
-      console.log(nameerror.errors)
-      console.log("erro")
-      window.alert("erro de validação no campo")
-    } else {
-      console.log('sem erros')
-      console.log("cadastrou! uhuu")
-      window.alert("cadastrado com sucesso! :)")
+
+  onClick() {
+    this.doing = true;
+
+    const obj = {
+      idGestor: this.loginService.funcionario.id,
+      name: this.registerForm.get('name').value,
+      type: 1,
+      description: this.registerForm.get('description').value,
+      endPoint: this.registerForm.get('endpoint').value
     }
+    this.apiService.addApi(obj)
+      .subscribe(data => {
+        alert(data[0].message)
+
+        if (data[0].success == 1) {
+          this.router.navigate(['/manager/index'])
+        }
+        else {
+          this.doing = false;
+        }
+      });
   }
 }

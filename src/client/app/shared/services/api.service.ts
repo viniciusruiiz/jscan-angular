@@ -24,4 +24,8 @@ export class ApiService {
     get(id: number) {
         return this.http.get<any>(this.url + `/api/${id}`, { headers: new HttpHeaders().set("Authorization", "Bearer " + this.ls.funcionario.token) });
     }
+
+    addApi(obj: any){
+        return this.http.post<any>(this.url + '/api/add', obj, this.httpOptions)
+    }
 }

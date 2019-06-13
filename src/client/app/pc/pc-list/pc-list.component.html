@@ -5,23 +5,25 @@
 
   <div class="card">
     <div class="card-header">
-      <input type="text" [(ngModel)]="filtro" placeholder="Procurar funcionário">
+      <!-- <input type="text" [(ngModel)]="filtro" placeholder="Procurar funcionário"> -->
+      <input type="text" placeholder="Procurar funcionário">
     </div>
-    <div class="card-body">
+    <div class="card-body" [ngClass]="{'wait':wait}">
+      <fa name="spinner" animation="spin" class="waiter"></fa>
       <div class="row">
 
         <!-- <div > -->
-        <div class="col-md-6" *ngFor="let pc of this.filterResult.fillApi(pcs, filtro)">
-            <a routerLink="/manager/detalhe/{{pc.id}}" class="btn btn-fix ">
-            <div class="card">
+        <div class="col-md-6 pcWait" *ngFor="let funcionario of funcionarios">
+            <a routerLink="/manager/detalhe/{{funcionario.idPc}}" class="btn btn-fix ">
+            <div class="card pc-card">
               <div class="card-header pc">
-                <h4 style="text-align: center">{{pc.name}}</h4>
+                <h4 style="text-align: center">{{funcionario.name}}</h4>
               </div>
               <div class="card-body pc-body">
-                <p>{{pc.namePc}}</p>
-                <p>{{pc.processador}}</p>
-                <p>{{pc.armazenamento}}</p>
-                <span>{{pc.memoria}}</span>
+                <p>{{funcionario.pcName}}</p>
+                <p>{{funcionario.pcProcessor}}</p>
+                <p>{{funcionario.pcStorage}} Gb de armazenamento</p>
+                <span>{{funcionario.pcMemory}} Gb de RAM</span>
               </div>
             </div>
           </a>

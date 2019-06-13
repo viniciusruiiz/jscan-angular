@@ -1,7 +1,8 @@
+import { LoginService } from './../../shared/services/login.service';
+import { Funcionario } from './../../shared/models/funcionario';
 import { FiltroService } from '../../shared/services/filtro.service';
-import { Pc } from '../../shared/models/pc';
 import { Component, OnInit } from '@angular/core';
-import { Pcs } from '../../shared/mock/pc-mock'
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-pc-list',
@@ -10,27 +11,26 @@ import { Pcs } from '../../shared/mock/pc-mock'
 })
 export class PcListComponent implements OnInit {
 
-  public pcs : Pc[];
+  public funcionarios : Funcionario[];
   filtro: String
   filterResult: FiltroService //serviço de filtro
+  public wait: Boolean = true;
   
-  constructor(private filt: FiltroService) { 
-    this.pcs = Pcs;
+  constructor(private filt: FiltroService, private loginService: LoginService, private userService: UserService) { 
+    this.funcionarios = [];
     this.filterResult = filt;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    let idGst = this.loginService.funcionario.id;
 
-  }
+    await this.userService.getUserByManager(idGst).forEach(data => {
+      data.forEach(user => {
+        user.pcMemory = Math.round(user.pcMemory / 1000)
+        this.funcionarios.push(user)
+      })
+    })
 
-  fillApi() {
-    if (this.pcs.length === 0 || this.filtro === undefined || this.filtro.trim() === '') {
-      return this.pcs;
-    }
-
-
-    return this.pcs.filter(
-      p => p.name.toLocaleLowerCase().includes(this.filtro.toLocaleLowerCase())
-    );
+    this.wait = false;
   }
 }

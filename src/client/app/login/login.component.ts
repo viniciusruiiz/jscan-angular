@@ -8,19 +8,15 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  login: String;
-  senha: String;
   mostrarSpinner;
   loginForm: FormGroup;
+  private doing: Boolean = false;
 
   constructor(private loginService: LoginService, private fb: FormBuilder){}
 
- 
-  
   async ngOnInit() {
     document.body.classList.add('bg-img');
     
-    console.log(this.mostrarSpinner)
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       senha: ['', Validators.required]

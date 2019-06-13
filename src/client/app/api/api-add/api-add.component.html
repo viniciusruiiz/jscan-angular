@@ -3,6 +3,7 @@
   <div class="card" [formGroup]="registerForm">
 
     <h3 class="card-title url">Cadastro de API</h3>
+
     <input type="text" id="name" placeholder="Nome da API" formControlName="name" name="name" class="form-control"
       maxlength="16">
 
@@ -14,7 +15,8 @@
 
 
     <button (click)="onClick()" class="btn">
-      Cadastrar</button>
+      <span>Cadastrar <span class="spinner-border spinner-border-sm" [ngClass]="{'waiting': !doing}" ></span></span></button>
+
   </div>
 
 

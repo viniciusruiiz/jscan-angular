@@ -17,7 +17,7 @@ export class ApiListComponent implements OnInit {
   filtro: String //campo do filtro, no html
   apis: Api[];
   filterResult: FiltroService //serviço de filtro
-  public wait : Boolean = true;
+  public wait: Boolean = true;
 
   constructor(private filt: FiltroService, private apiService: ApiService, private loginService: LoginService) {
     this.apis = [];
@@ -26,23 +26,12 @@ export class ApiListComponent implements OnInit {
 
   async ngOnInit() {
 
-    await this.apiService.getApis(this.loginService.funcionario.id).forEach(top => top.forEach(api => this.apis.push(api)));
-
+    if (this.loginService.funcionario.idManager) {
+      await this.apiService.getApis(this.loginService.funcionario.idManager).forEach(top => top.forEach(api => this.apis.push(api)));
+    } else {
+      await this.apiService.getApis(this.loginService.funcionario.id).forEach(top => top.forEach(api => this.apis.push(api)));
+    }
     this.wait = false;
-    
-    console.log(this.apis)
   }
-
-
-  // fillApi() {
-  //   if (this.apis.length === 0 || this.filtro === undefined || this.filtro.trim() === '') {
-  //     return this.apis;
-  //   }
-
-
-  //   return this.apis.filter(
-  //     v => v.name.toLocaleLowerCase().includes(this.filtro.toLocaleLowerCase())
-  //   );
-  // }
 
 }

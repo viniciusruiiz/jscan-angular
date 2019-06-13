@@ -1,0 +1,52 @@
+h3{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    color: white;
+}
+
+.radios{
+    width: 90%;
+    margin-left: 7%
+}
+
+.row{
+    width: 90%;
+    margin-left: 5%
+}
+
+// span{
+//     padding-right: 10px;
+//     margin-top: 10px;
+//     color: white;
+// }
+
+.radio-inline{
+    margin-right:12px;
+}
+
+button:hover{
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.24), 0 10px 10px 0 rgba(0,0,0,0.19); 
+}
+
+.card{
+    background-color: #7290BB;
+}
+
+label{
+    font-weight: bold;
+    color: white;
+}
+
+.waiting{
+    display: none;
+}
+
+button{
+    width: 30%;
+    margin-left: 35%;
+    margin-bottom: 15px;
+    background-color: #E3EDFA;
+    font-weight: 550;
+    height: 47px;
+}

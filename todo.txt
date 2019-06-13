@@ -1,0 +1,25 @@
+PARA FAZER -
+
+-> essencial
+
+	* tela de registro (já pronta do outro, só implemetar)
+
+-> importante (por ordem de importância)
+
+	* arrumar os dados do banco ( criar massa )
+	* arrumar o filtro de pesquisa
+	* arrumar erro href does not exist on type HTMLElement para subir o site no azure
+	* validações nos formulários
+	* estilizar alert e confirm do javascript ( não sei se é possível, mas acho importante )
+
+-> desejável (por ordem de importância)
+
+	Sessão (não deslogar quando atualizar a página(complicado, pode demorar um pouco))
+	Máscaras em forms
+	gráficos no y - só números interos e positivos
+	mais rotas para 3 meses passados no leitura de api ( e implementar no angular )
+	botão para deletar a api
+	arrumar os erros que que o angular está dando ( no console e na tela de login - 2 erros que não interferem em nada)
+	implementar no cadastro de api um http:// automatico, caso não tenha, se não da pau no c#
+	tela para detalhe de funcionario para visualização da empresa
+	

@@ -8,13 +8,24 @@
     border: none;
     white-space: normal;
     color: black;
-    text-align: left;
+    text-align: center;
     width: 100%;
     }
 
 h4 {
-    font-weight: normal;
+    font-weight: 600;
     color: black;
+}
+
+.waiter {
+  display: none;
+  text-align: center; 
+  margin-top: 10%; 
+  margin-bottom: 10%;
+}
+
+.wait .waiter {
+  display: block !important;
 }
 
 #title {
@@ -50,7 +61,7 @@ h4 {
     background-color: #E3EDFA;
   }
 
-  .pc-body:hover{
+  .pc-card:hover .pc-body{
     background-color: #f1f1f1;
     transition-duration: 0.1s
   }

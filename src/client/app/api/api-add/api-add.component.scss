@@ -11,6 +11,14 @@ input[type=text]{
     margin-bottom: 12px;
 }
 
+.waiting{
+    display: none;
+}
+
+.doing{
+    display: block;
+}
+
 button{
     width: 30%;
     margin-left: 35%;

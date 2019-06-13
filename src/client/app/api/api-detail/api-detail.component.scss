@@ -4,13 +4,19 @@
     color: white;
 }
 
-.wait h4 {
+.canvas {
+    display: block;
+}
+
+.wait .canvas {
     display: none;
 }
 
 .waiter {
     display: none;
     text-align: center; 
+    margin-top: 10%; 
+    margin-bottom: 10%;
 }
 
 .wait .waiter {
@@ -24,6 +30,10 @@
 .endpoint {
     font-weight: 350;
     color: white;
+}
+
+.about{
+    width: 100%;
 }
 
 .pcdata {

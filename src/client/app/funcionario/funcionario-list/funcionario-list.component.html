@@ -1,39 +1,41 @@
 <div class="container-fluid" style="margin-bottom:25px;">
 
-    <h4 style="margin-top: 20px; margin-bottom: 45px; " id="title">
-      Lista de Funcionários</h4>
-  
-    <div class="card">
-      <div class="card-header">
-        <input type="text" [(ngModel)]="filtro" placeholder="Procurar funcionário">
-      </div>
-      <div class="card-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col" style="color:black">Nome</th>
-              <!-- <th scope="col" style="color:black">E-Mail</th>
-              <th scope="col" style="color:black">Telefone</th> -->
-              <th scope="col" style="color:black">Cargo</th>
-              <th scope="col" style="color:black">Desligar</th>
-            </tr>
-          </thead>
-  
-          <tr *ngFor="let funcionario of this.filterResult.fillDev(funcionarios, filtro)">
-              <th scope="row">{{funcionario.name}}</th>
-              <!-- <td>{{funcionario.email}}</td> -->
-              <!-- <td>{{funcionario.phone}}</td> -->
-              <td>
-                <span *ngIf="funcionario.type == 1">Gestor</span>
-                <span *ngIf="funcionario.type == 2">Desenvolvedor</span>
-              </td>
-              <td>
-                <fa name="trash"></fa>
-              </td>
-          </tr>
-  
-        </table>
-  
-  
-      </div>
+  <h4 style="margin-top: 20px; margin-bottom: 45px; " id="title">
+    Lista de Funcionários</h4>
+
+  <div class="card">
+    <div class="card-header">
+      <input type="text" [(ngModel)]="filtro" placeholder="Procurar funcionário">
     </div>
+    <div class="card-body" [ngClass]="{'wait':wait}">
+      <fa name="spinner" animation="spin" class="waiter"></fa>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" style="color:black">Nome</th>
+            <th scope="col" style="color:black">E-Mail</th>
+            <th scope="col" style="color:black">Telefone</th>
+            <th scope="col" style="color:black">Cargo</th>
+            <th scope="col" style="color:black">Desligar</th>
+          </tr>
+        </thead>
+
+        <tr *ngFor="let funcionario of this.filterResult.fillDev(funcionarios, filtro)">
+          <th scope="row">{{funcionario.name}}</th>
+          <td>{{funcionario.email}}</td>
+          <td>{{funcionario.phone}}</td>
+          <td>
+            <span *ngIf="funcionario.type == 1">Gestor</span>
+            <span *ngIf="funcionario.type == 2">Desenvolvedor</span>
+          </td>
+          <td>
+            <fa name="trash" (click)="delete(funcionario.id)" id="{{funcionario.id}}a"></fa>
+            <fa name="spinner" animation="spin" style="display: none" id="{{funcionario.id}}b"></fa>
+          </td>
+        </tr>
+
+      </table>
+
+
+    </div>
+  </div>

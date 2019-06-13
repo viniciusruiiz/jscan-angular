@@ -24,4 +24,8 @@ export class NavBarComponent implements OnInit {
 
     await this.ls.navItens.subscribe(data => this.navItens = data);
   }
+
+  public logoff(){
+    this.ls.deslogar();
+  }
 }
