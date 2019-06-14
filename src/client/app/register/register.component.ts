@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit {
       this.registerForm.reset()
     }else{
       alert("Preencha corretamente todos os campos!!!")
-      
     }
   }
 

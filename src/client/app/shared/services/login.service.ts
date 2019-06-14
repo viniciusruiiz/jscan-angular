@@ -1,4 +1,3 @@
-import { PcService } from './pc.service';
 import { Injectable, EventEmitter, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
