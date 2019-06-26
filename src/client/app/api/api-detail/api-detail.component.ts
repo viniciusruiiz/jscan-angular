@@ -106,7 +106,7 @@ export class ApiDetailComponent implements OnInit {
       document.getElementById('name').innerHTML = data[0].nmApi;
       document.getElementById('endPoint').innerHTML = data[0].nmEndPoint;
       document.getElementById('description').innerHTML = data[0].dsApi;
-      document.getElementById('endPoint').href = data[0].nmEndPoint;
+      //document.getElementById('endPoint').href = data[0].nmEndPoint;
     })
 
     await this.readService.getApiPercentageTimeUp(idApi).forEach(data => {
