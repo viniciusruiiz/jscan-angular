@@ -102,14 +102,15 @@ export class ApiDetailComponent implements OnInit {
     let idApi = this.router.snapshot.params.apiId;
     this.dataSetPercentageTimeUp = [];
 
-    console.log('wtf')
-    console.log(this.barChartLabels)
-
     this.apiService.get(idApi).forEach(data => {
       document.getElementById('name').innerHTML = data[0].nmApi;
       document.getElementById('endPoint').innerHTML = data[0].nmEndPoint;
-      document.getElementById('description').innerHTML = data[0].dsApi;
-      //document.getElementById('endPoint').href = data[0].nmEndPoint;
+
+      if (!!data[0].dsApi) {
+        document.getElementById('description').innerHTML = data[0].dsApi;
+        document.getElementById('descriptionRow').style.display = 'block';
+      }
+
     })
 
     await this.readService.getApiPercentageTimeUp(idApi).forEach(data => {
