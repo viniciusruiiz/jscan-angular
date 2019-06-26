@@ -1,7 +1,6 @@
 import { LoginService } from './../../shared/services/login.service';
 import { ApiService } from './../../shared/services/api.service';
 import { Api } from '../../shared/models/api';
-import { Apis } from '../../shared/mock/api-mock';
 import { Component, OnInit } from '@angular/core';
 import { FiltroService } from 'src/client/app/shared/services/filtro.service';
 import { Observable } from 'rxjs';

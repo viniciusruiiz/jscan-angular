@@ -5,15 +5,15 @@
 
   <div class="card">
     <div class="card-header">
-      <!-- <input type="text" [(ngModel)]="filtro" placeholder="Procurar funcionário"> -->
-      <input type="text" placeholder="Procurar funcionário">
+      <input type="text" [(ngModel)]="filtro" placeholder="Procurar funcionário">
+      <!-- <input type="text" placeholder="Procurar funcionário"> -->
     </div>
     <div class="card-body" [ngClass]="{'wait':wait}">
       <fa name="spinner" animation="spin" class="waiter"></fa>
       <div class="row">
 
         <!-- <div > -->
-        <div class="col-md-6 pcWait" *ngFor="let funcionario of funcionarios">
+        <div class="col-md-6 pcWait" *ngFor="let funcionario of this.filterResult.fillDev(funcionarios, filtro)">
             <a routerLink="/manager/detalhe/{{funcionario.idPc}}" class="btn btn-fix ">
             <div class="card pc-card">
               <div class="card-header pc">

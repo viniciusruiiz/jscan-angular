@@ -1,7 +1,7 @@
 import { PcService } from './../../shared/services/pc.service';
 import { LoginService } from './../../shared/services/login.service';
 import { ReadService } from './../../shared/services/read.service';
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { SingleDataSet, Color, BaseChartDirective, Label } from 'ng2-charts';
 import { ActivatedRoute } from '@angular/router';
@@ -11,10 +11,12 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './pc-detail.component.html',
   styleUrls: ['./pc-detail.component.scss']
 })
-export class PcDetailComponent implements OnInit {
+export class PcDetailComponent implements OnInit, OnDestroy {
   constructor(private readService: ReadService, private loginService: LoginService, private route: ActivatedRoute, private pcService: PcService) { }
 
   public wait: Boolean = true;
+  public gambiarra: Boolean = false;
+  private interval;
 
   async ngOnInit() {
     //let idPc = !!this.loginService.funcionario.pc.id ? this.loginService.funcionario.pc.id : this.route.snapshot.params.id;
@@ -31,8 +33,8 @@ export class PcDetailComponent implements OnInit {
     this.dataSetDiskAvarage = []
 
     this.pcService.get(idPc).forEach(data => {
-      
-      let memoriaRam =  Math.round(data[0].vlMemoriaRam / 1000).toString();
+
+      let memoriaRam = Math.round(data[0].vlMemoriaRam / 1000).toString();
 
       document.getElementById("namePc").innerHTML = data[0].nmComputador;
       document.getElementById("model").innerHTML = data[0].nmModeloSistema;
@@ -83,7 +85,8 @@ export class PcDetailComponent implements OnInit {
 
     this.wait = false;
 
-    setInterval(() => this.pushOne(idPc), 2000);
+    this.gambiarra = true;
+    this.interval = setInterval(() => this.pushOne(idPc), 2000);
   }
 
   @ViewChildren(BaseChartDirective) chart: QueryList<BaseChartDirective>;
@@ -188,10 +191,6 @@ export class PcDetailComponent implements OnInit {
 
   //#endregion
 
-  private generateNumber() {
-    return Math.round(Math.random() * 50)
-  }
-
   public async pushOne(idPc: number) {
 
     await this.readService.getPcLastReadTime(idPc).forEach(data => {
@@ -224,7 +223,14 @@ export class PcDetailComponent implements OnInit {
         })
       }
     })
+  }
 
+  async ngOnDestroy() {
+    if (this.gambiarra)
+      clearInterval(this.interval)
+    else {
+      this.pushOne = async () => { }
+    }
   }
 }
 

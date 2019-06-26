@@ -75,11 +75,16 @@ export class LoginService {
         }
     }
 
-    cadastrar(funcionario: Funcionario) {
+    cadastrar(funcionario: any) {
         this.http.post(this.url + "/company/add", funcionario)
             .subscribe(data => {
+                
                 alert(data[0].message)
-                this.router.navigate(['/'])
+                
+                if(data[0].success == 1){
+                this.fazerLogin(funcionario.email, funcionario.senha)
+                //this.router.navigate(['/'])
+                }
             })
     }
 

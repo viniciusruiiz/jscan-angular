@@ -13,7 +13,6 @@
         <thead>
           <tr>
             <th scope="col" style="color:black">API</th>
-            <!-- <th scope="col">Tipo</th> -->
             <th scope="col" style="color:black">Status</th>
           </tr>
         </thead>
@@ -21,25 +20,12 @@
         <tr *ngFor="let api of this.filterResult.fillApi(apis, filtro)" class="apis" routerLink="/apidetail/{{api.id}}">
 
           <th scope="row">{{api.name}}</th>
-          <!-- <td>
-            <span *ngIf="api.type == 1">Aberta</span>
-            <span *ngIf="api.type == 2">Local</span>
-          </td> -->
+
           <td>
-
-            <!-- <div 
-              style="  height: 25px;
-            width: 25px;
-            background-color: #bbb;
-            margin-left: 12px;
-            border-radius: 50%;
-            display: inline-block;" 
-            [ngClass]="{ 'bg-success':api.status, 'bg-danger':!api.status }"> 
-          </div> -->
-
             <fa *ngIf="api.status" name="check-circle" style="color:green"></fa>
             <fa *ngIf="!api.status" name="exclamation-triangle" style="color:red"></fa>
           </td>
+
         </tr>
 
       </table>
