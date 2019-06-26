@@ -10,7 +10,6 @@ export class LoginComponent implements OnInit {
 
   mostrarSpinner;
   loginForm: FormGroup;
-  private doing: Boolean = false;
 
   constructor(private loginService: LoginService, private fb: FormBuilder){}
 

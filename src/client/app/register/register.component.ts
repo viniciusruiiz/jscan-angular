@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
     private ls: LoginService) { }
   registerForm: FormGroup;
   foiEnviado: boolean = false;
+  mostrarSpinner: boolean = false;
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -27,12 +28,12 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister(){
-    this.foiEnviado = true;
+    this.mostrarSpinner = true;
     if(this.registerForm.status == "VALID"){
       this.ls.cadastrar(this.registerForm.value);
-      this.registerForm.reset()
     }else{
-      alert("Preencha corretamente todos os campos!!!")
+      alert("Por favor, preencha corretamente todos os campos.")
+      this.mostrarSpinner = false;
     }
   }
 

@@ -89,11 +89,11 @@ export class ApiDetailComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = [this.getMonthName(this.month)];
+  public barChartLabels: Label[] = [this.getMonthName(this.month - 3), this.getMonthName(this.month - 2), this.getMonthName(this.month - 1), this.getMonthName(this.month)];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartData: ChartDataSets[] = [
-    { data: [0], label: 'Número de quedas' }
+    { data: [0, 0, 0, 0], label: 'Número de quedas' }
   ];
 
   @ViewChildren(BaseChartDirective) chart: QueryList<BaseChartDirective>;
@@ -101,6 +101,9 @@ export class ApiDetailComponent implements OnInit {
   async ngOnInit() {
     let idApi = this.router.snapshot.params.apiId;
     this.dataSetPercentageTimeUp = [];
+
+    console.log('wtf')
+    console.log(this.barChartLabels)
 
     this.apiService.get(idApi).forEach(data => {
       document.getElementById('name').innerHTML = data[0].nmApi;
@@ -116,7 +119,19 @@ export class ApiDetailComponent implements OnInit {
     })
 
     await this.readService.getApiTimesDownInMonth(idApi).forEach(data => {
-      this.barChartData[0].data = [data.numberTimesDown]
+      this.barChartData[0].data = [0, 0, 0, data.numberTimesDown]
+    })
+
+    await this.readService.getApiTimesDownInLastMonth(idApi).forEach(data => {
+      this.barChartData[0].data[2] = data.numberTimesDown
+    })
+
+    await this.readService.getApiTimesDownInLastMonth2(idApi).forEach(data => {
+      this.barChartData[0].data[1] = data.numberTimesDown
+    })
+
+    await this.readService.getApiTimesDownInLastMonth3(idApi).forEach(data => {
+      this.barChartData[0].data[0] = data.numberTimesDown
     })
 
     this.chart.forEach(child => {
@@ -124,7 +139,5 @@ export class ApiDetailComponent implements OnInit {
     })
 
     this.wait = false;
-
-    //setTimeout(() => this.wait = false, 2400)
   }
 }

@@ -52,4 +52,16 @@ export class ReadService {
         return this.http.get<any>(this.url + `/read/api/numberTimesDown/${id}`, this.httpOptions);
     }
 
+    getApiTimesDownInLastMonth(id: number) {
+        return this.http.get<any>(this.url + `/read/api/numberTimesDownLastMonth/${id}`, this.httpOptions);
+    }
+
+    getApiTimesDownInLastMonth2(id: number) {
+        return this.http.get<any>(this.url + `/read/api/numberTimesDownLastMonth2/${id}`, this.httpOptions);
+    }
+
+    getApiTimesDownInLastMonth3(id: number) {
+        return this.http.get<any>(this.url + `/read/api/numberTimesDownLastMonth3/${id}`, this.httpOptions);
+    }
+
 }
