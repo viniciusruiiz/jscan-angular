@@ -27,7 +27,7 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "ng2-charts": "^2.2.3",
     "ngx-bootstrap": "^4.1.1",
     "rxjs": "~6.3.3",
